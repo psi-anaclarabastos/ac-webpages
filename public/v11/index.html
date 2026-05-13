@@ -538,10 +538,10 @@ var isEstudante=prof==='Estudante de Psicologia';
 var isTarget=isPsi||isEstudante;
 
 // --- Tracking data (shared across all platforms) ---
-var leadData={nome:nome,email:email,telefone:phoneClean,profissao:prof};
 var nameParts=nome.split(/\s+/);
 var fn=nameParts[0]||'';
 var ln=nameParts.slice(1).join(' ')||'';
+var leadData={fn:fn,ln:ln,email:email,telefone:phoneClean,profissao:prof};
 
 // --- Generate unique event_ids for deduplication (Pixel ↔ CAPI) ---
 var eidTodos=genEventId('lead_todos');
