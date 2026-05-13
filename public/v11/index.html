@@ -81,7 +81,8 @@ select.input:valid:not([data-empty]){color:var(--on-surface)}
 .btn-primary:hover{opacity:.9}
 .btn-primary:disabled{opacity:.6;cursor:not-allowed}
 .safe-text{font-size:.75rem;color:var(--outline);font-style:italic;margin-top:.5rem}
-.hero-img-mobile{margin-top:0;width:100%;max-width:400px;aspect-ratio:400/699;background:url(images/hero-ana-clara-mobile.webp) center bottom/cover no-repeat}
+.hero-img-mobile{margin-top:0;width:100%;max-width:400px}
+.hero-img-mobile img{width:100%;height:auto}
 
 /* Intro */
 .intro{background:var(--surface-container-high);padding:3rem 2rem;text-align:center}
@@ -207,7 +208,9 @@ select.input:valid:not([data-empty]){color:var(--on-surface)}
 <p class="safe-text">Não se preocupe, seus dados estão seguros conosco.</p>
 </form>
 </div>
-<div class="hero-img-mobile" role="img" aria-label="Ana Clara Bastos"></div>
+<div class="hero-img-mobile">
+<img src="images/hero-ana-clara-mobile.webp" alt="Ana Clara Bastos" width="400" height="699" fetchpriority="high">
+</div>
 </div>
 </div>
 </section>
