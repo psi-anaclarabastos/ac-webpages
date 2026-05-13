@@ -338,14 +338,17 @@ document.addEventListener('click',loadFbPixel,{once:true});
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1975930146225275&ev=PageView&noscript=1"></noscript>
 <!-- END META PIXEL -->
 
-<!-- GA4 + GOOGLE ADS -->
-<script defer src="https://www.googletagmanager.com/gtag/js?id=G-WZYTH83M6D"></script>
+<!-- GA4 + GOOGLE ADS (deferred) -->
 <script>
 window.dataLayer=window.dataLayer||[];
 function gtag(){dataLayer.push(arguments)}
 gtag('js',new Date());
 gtag('config',TRK.GA4_ID);
 gtag('config',TRK.GADS_ID);
+function loadGtag(){if(window._gtagLoaded)return;window._gtagLoaded=true;var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+TRK.GA4_ID;document.head.appendChild(s)}
+setTimeout(loadGtag,3000);
+document.addEventListener('scroll',loadGtag,{once:true});
+document.addEventListener('click',loadGtag,{once:true});
 </script>
 <!-- END GA4 + GOOGLE ADS -->
 
