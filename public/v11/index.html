@@ -592,8 +592,9 @@ fbp:getCookie('_fbp')||''
 });
 
 // Send webhook then redirect — timeout safety net at 3s
+var isDebug=new URLSearchParams(window.location.search).has('debug');
 var redirected=false;
-function doRedirect(){if(!redirected){redirected=true;window.location.href=redirectUrl}}
+function doRedirect(){if(isDebug){btn.textContent='OK (debug)';btn.disabled=false;console.log('DEBUG — redirect blocked:',redirectUrl);return}if(!redirected){redirected=true;window.location.href=redirectUrl}}
 
 fetch(webhookUrl,{
 method:'POST',
