@@ -33,7 +33,7 @@
 --surface-container:#f0eded;
 --surface-container-high:#eae8e7;
 --on-surface:#1b1c1c;
---outline:#707974;
+--outline:#595f5b;
 --outline-variant:#bfc9c2;
 --tertiary:#292726;
 --tertiary-container:#3f3d3b;
@@ -44,6 +44,7 @@
 body{font-family:'Montserrat',sans-serif;color:var(--on-surface);background:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 .container{max-width:1140px;margin:0 auto;width:100%}
 img{display:block;max-width:100%;height:auto}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
 h1,h2,h3{font-family:'Montserrat',sans-serif}
 
 /* Hero */
@@ -77,7 +78,7 @@ h1,h2,h3{font-family:'Montserrat',sans-serif}
 .ddi-opt .flag-emoji{font-size:1rem}
 .ddi-opt .ddi-code{color:var(--outline);min-width:36px}
 .ddi-opt .ddi-name{color:var(--on-surface);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-select.input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23707974' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;color:var(--outline)}
+select.input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23595f5b' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;color:var(--outline)}
 select.input:valid:not([data-empty]){color:var(--on-surface)}
 .btn-primary{width:100%;padding:1rem;border:none;border-radius:var(--radius);background:var(--purple);color:#fff;font-family:inherit;font-size:.875rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:opacity .2s;margin-top:.5rem}
 .btn-primary:hover{opacity:.9}
@@ -166,6 +167,7 @@ select.input:valid:not([data-empty]){color:var(--on-surface)}
 </head>
 <body>
 
+<main>
 <!-- Hero -->
 <section class="hero" id="hero">
 <div class="container hero-inner">
@@ -201,7 +203,8 @@ select.input:valid:not([data-empty]){color:var(--on-surface)}
 <div id="ddiList"></div>
 </div>
 </div>
-<select name="profissao" class="input" required data-empty>
+<label for="profissao" class="sr-only">Profissão</label>
+<select name="profissao" id="profissao" class="input" required data-empty>
 <option value="" disabled selected>Escolha uma opção</option>
 <option value="Psicóloga(o)">Psicóloga(o)</option>
 <option value="Estudante de Psicologia">Estudante de Psicologia</option>
@@ -300,6 +303,7 @@ select.input:valid:not([data-empty]){color:var(--on-surface)}
 </div>
 </section>
 
+</main>
 <!-- Footer -->
 <footer class="footer">
 <div class="container">
