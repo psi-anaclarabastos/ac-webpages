@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Das Perdas ao Luto | Ana Clara Bastos | L2605 v11</title>
+<title>Das Perdas ao Luto | Ana Clara Bastos</title>
 <meta name="description" content="Luto não é só por morte. Aprenda a conduzir situações de perdas — por morte ou não — de forma segura e respeitosa.">
 <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
 <link rel="preload" href="fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin>
-<meta property="og:title" content="Das Perdas ao Luto | Ana Clara Bastos | L2605 v11">
+<meta property="og:title" content="Das Perdas ao Luto | Ana Clara Bastos">
 <meta property="og:description" content="Luto não é só por morte. Aprenda a conduzir situações de perdas — por morte ou não — de forma segura e respeitosa.">
 <meta property="og:image" content="images/ana-capa.jpg">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Das Perdas ao Luto | Ana Clara Bastos | L2605 v11">
+<meta name="twitter:title" content="Das Perdas ao Luto | Ana Clara Bastos">
 <meta name="twitter:description" content="Luto não é só por morte. Aprenda a conduzir situações de perdas — por morte ou não — de forma segura e respeitosa.">
 <meta name="twitter:image" content="images/ana-capa.jpg">
 <style>
@@ -45,21 +45,21 @@ img{display:block;max-width:100%;height:auto}
 h1,h2,h3{font-family:'Montserrat',sans-serif}
 
 /* Hero */
-.hero{background:var(--surface);padding:1rem 1.5rem 0}
+.hero{background:var(--surface);padding:.75rem 1.25rem 0}
 .hero-inner{display:flex;flex-direction:column;align-items:center}
 .hero-col-img{display:none}
 .hero-col-form{display:flex;flex-direction:column;align-items:center;width:100%}
-.hero-logo{height:100px;width:auto;margin-bottom:.75rem}
-.reg-box{width:100%;max-width:420px;border:1px solid var(--outline-variant);padding:1.5rem;border-radius:var(--radius);text-align:center}
-.date-line{display:flex;align-items:center;justify-content:center;gap:.5rem;margin-bottom:1rem}
-.date-line span{font-size:.65rem;font-weight:700;color:var(--outline);letter-spacing:.12em;text-transform:uppercase}
+.hero-logo{height:72px;width:auto;margin-bottom:.5rem}
+.reg-box{width:100%;max-width:420px;border:1px solid var(--outline-variant);padding:1rem 1.25rem;border-radius:var(--radius);text-align:center}
+.date-line{display:flex;align-items:center;justify-content:center;gap:.5rem;margin-bottom:.5rem}
+.date-line span{font-size:.6rem;font-weight:700;color:var(--outline);letter-spacing:.12em;text-transform:uppercase}
 .date-line::before,.date-line::after{content:'';width:2rem;height:1px;background:var(--outline-variant)}
-.hero h1{font-size:2rem;font-weight:700;color:var(--green);line-height:1.2;margin-bottom:.5rem}
-.hero-sub{font-size:1rem;font-weight:600;color:var(--green-container);margin-bottom:1.5rem;line-height:1.5}
-.form-label{font-size:.75rem;color:var(--outline);text-transform:uppercase;letter-spacing:.08em;margin-bottom:1rem;display:block}
-.form-group{display:flex;flex-direction:column;gap:.75rem}
-.input{width:100%;padding:.75rem 1rem;border:1px solid var(--outline-variant);border-radius:var(--radius);font-family:inherit;font-size:.875rem;color:var(--on-surface);background:var(--surface-container);outline:none;transition:border-color .2s}
-.input:focus{border-color:var(--green-container);border-width:2px;padding:calc(.75rem - 1px) calc(1rem - 1px)}
+.hero h1{font-size:1.625rem;font-weight:700;color:var(--green);line-height:1.2;margin-bottom:.35rem}
+.hero-sub{font-size:.875rem;font-weight:600;color:var(--green-container);margin-bottom:.75rem;line-height:1.4}
+.form-label{font-size:.7rem;color:var(--outline);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;display:block}
+.form-group{display:flex;flex-direction:column;gap:.5rem}
+.input{width:100%;padding:.625rem .875rem;border:1px solid var(--outline-variant);border-radius:var(--radius);font-family:inherit;font-size:.8125rem;color:var(--on-surface);background:var(--surface-container);outline:none;transition:border-color .2s}
+.input:focus{border-color:var(--green-container);border-width:2px;padding:calc(.625rem - 1px) calc(.875rem - 1px)}
 .input::placeholder{color:var(--outline)}
 .phone-row{display:flex;position:relative}
 .phone-flag{display:flex;align-items:center;gap:.25rem;padding:0 .75rem;border:1px solid var(--outline-variant);border-right:0;border-radius:var(--radius) 0 0 var(--radius);background:var(--surface-container-high);font-size:.75rem;color:var(--on-surface);cursor:pointer;white-space:nowrap;user-select:none}
@@ -77,10 +77,10 @@ h1,h2,h3{font-family:'Montserrat',sans-serif}
 .ddi-opt .ddi-name{color:var(--on-surface);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 select.input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23595f5b' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;color:var(--outline)}
 select.input:valid:not([data-empty]){color:var(--on-surface)}
-.btn-primary{width:100%;padding:1rem;border:none;border-radius:var(--radius);background:var(--purple);color:#fff;font-family:inherit;font-size:.875rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:opacity .2s;margin-top:.5rem}
+.btn-primary{width:100%;padding:.75rem;border:none;border-radius:var(--radius);background:var(--purple);color:#fff;font-family:inherit;font-size:.8125rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:opacity .2s;margin-top:.25rem}
 .btn-primary:hover{opacity:.9}
 .btn-primary:disabled{opacity:.6;cursor:not-allowed}
-.safe-text{font-size:.75rem;color:var(--outline);font-style:italic;margin-top:.5rem}
+.safe-text{font-size:.65rem;color:var(--outline);font-style:italic;margin-top:.35rem}
 .hero-img-mobile{margin-top:0;width:100%;max-width:400px}
 .hero-img-mobile img{width:100%;height:auto}
 
@@ -141,9 +141,18 @@ select.input:valid:not([data-empty]){color:var(--on-surface)}
 .hero-col-img{display:block;flex:1;min-height:100%;background:url(images/hero-ana-clara.webp) center/cover no-repeat}
 .hero-col-form{flex:1;padding:2rem 2.5rem;justify-content:flex-start}
 .hero-img-mobile{display:none}
-.hero h1{font-size:2.25rem}
-.hero-sub{font-size:1.125rem}
-.reg-box{max-width:100%}
+.hero-logo{height:100px;margin-bottom:.75rem}
+.reg-box{padding:1.5rem;max-width:100%}
+.date-line{margin-bottom:1rem}
+.date-line span{font-size:.65rem}
+.hero h1{font-size:2.25rem;margin-bottom:.5rem}
+.hero-sub{font-size:1.125rem;margin-bottom:1.5rem;line-height:1.5}
+.form-label{font-size:.75rem;margin-bottom:1rem}
+.form-group{gap:.75rem}
+.input{padding:.75rem 1rem;font-size:.875rem}
+.input:focus{padding:calc(.75rem - 1px) calc(1rem - 1px)}
+.btn-primary{padding:1rem;font-size:.875rem;margin-top:.5rem}
+.safe-text{font-size:.75rem;margin-top:.5rem}
 /* Intro */
 .intro h2,.intro .highlight{font-size:1.5rem}
 /* Schedule 2x2 grid */
@@ -184,7 +193,7 @@ select.input:valid:not([data-empty]){color:var(--on-surface)}
 <span id="ddiCode">+55</span>
 <span class="arrow">&#9660;</span>
 </div>
-<input type="tel" name="telefone" class="input" id="phoneInput" placeholder="(71) 99999-9999" required autocomplete="tel-national">
+<input type="tel" name="telefone" class="input" id="phoneInput" placeholder="Whatsapp com DDD" required autocomplete="tel-national">
 <input type="hidden" name="ddi" id="ddiValue" value="+55">
 <input type="hidden" name="utm_source" id="utm_source">
 <input type="hidden" name="utm_medium" id="utm_medium">
@@ -466,7 +475,7 @@ flagEl.textContent=current.f;
 codeEl.textContent=current.d;
 hiddenDdi.value=current.d;
 phoneInput.value='';
-phoneInput.placeholder=current.m?current.m.replace(/#/g,'9'):'Telefone';
+phoneInput.placeholder=(current.c==='BR')?'Whatsapp com DDD':(current.m?current.m.replace(/#/g,'9'):'Telefone');
 closeDropdown();
 phoneInput.focus();
 }
