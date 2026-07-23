@@ -1,6 +1,9 @@
 {
   "outputDirectory": "public",
   "trailingSlash": true,
+  "rewrites": [
+    { "source": "/", "destination": "/v11-2608/" }
+  ],
   "headers": [
     {
       "source": "/v11/fonts/(.*)",
@@ -10,6 +13,12 @@
     },
     {
       "source": "/v11/images/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/v11-2608/images/(.*)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
