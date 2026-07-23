@@ -2,6 +2,7 @@
   "outputDirectory": "public",
   "trailingSlash": true,
   "rewrites": [
+    { "source": "/images/:file*", "destination": "/v11-2608/images/:file*" },
     { "source": "/", "destination": "/v11-2608/" }
   ],
   "headers": [
