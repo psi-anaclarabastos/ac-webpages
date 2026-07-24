@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro Realizado — Ana Clara Bastos</title>
+
+  <!-- GTM -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MLM6P2C7');</script>
+
+  <style>
+    :root {
+      --color-bg: #ffffff;
+      --color-text: #111111;
+      --color-text-muted: #555555;
+      --color-card: #f3f3f3;
+      --color-card-hover: #ebebeb;
+      --color-border: #dddddd;
+      --color-border-selected: #111111;
+      --color-btn: #2d2d2d;
+      --color-btn-text: #ffffff;
+      --color-btn-disabled: #aaaaaa;
+      --color-progress-bg: #e5e5e5;
+      --color-progress-fill: #111111;
+      --color-h2-accent: #25D366;
+      --radius-card: 12px;
+      --radius-btn: 10px;
+      --max-width: 640px;
+      --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+      font-family: var(--font);
+      background: var(--color-bg);
+      color: var(--color-text);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 1.25rem;
+    }
+
+    .page-inner {
+      width: 100%;
+      max-width: var(--max-width);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Header fixo ── */
+    .page-header {
+      padding: 2rem 0 1.5rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .page-h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .page-h2 {
+      font-size: 1rem;
+      color: var(--color-h2-accent);
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    /* ── Botão primário ── */
+    .btn-primary {
+      display: block;
+      width: 100%;
+      padding: 1rem;
+      background: var(--color-btn);
+      color: var(--color-btn-text);
+      border: none;
+      border-radius: var(--radius-btn);
+      font-family: var(--font);
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      transition: opacity 0.15s ease;
+    }
+    .btn-primary:hover { opacity: 0.88; }
+    .btn-primary:disabled { background: var(--color-btn-disabled); cursor: not-allowed; }
+
+    /* ── Botão WhatsApp ── */
+    .btn-whatsapp {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      padding: 1rem;
+      background: #25D366;
+      color: #ffffff;
+      border: none;
+      border-radius: var(--radius-btn);
+      font-family: var(--font);
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      transition: opacity 0.15s ease;
+    }
+    .btn-whatsapp:hover { opacity: 0.9; }
+
+    /* ── Intro ── */
+    .intro-card {
+      background: var(--color-card);
+      border-radius: var(--radius-card);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+    .intro-card-title {
+      font-size: 1.125rem;
+      font-weight: 700;
+    }
+    .intro-card-body {
+      font-size: 0.9375rem;
+      color: var(--color-text-muted);
+      line-height: 1.65;
+    }
+
+    /* ── Progress ── */
+    .progress-header {
+      padding: 1rem 0 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .back-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.25rem;
+      color: var(--color-text);
+      padding: 0.25rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .progress-bar-track {
+      flex: 1;
+      height: 6px;
+      background: var(--color-progress-bg);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: var(--color-progress-fill);
+      border-radius: 3px;
+      transition: width 0.3s ease;
+    }
+    .progress-label {
+      font-size: 0.8125rem;
+      color: var(--color-text-muted);
+      white-space: nowrap;
+    }
+
+    /* ── Pergunta ── */
+    .question-screen {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 1.5rem 0 1.5rem;
+      gap: 1.5rem;
+    }
+    .question-title {
+      font-size: 1.375rem;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+    .question-legend {
+      font-size: 0.9375rem;
+      color: var(--color-text-muted);
+      font-style: italic;
+      line-height: 1.55;
+      margin-top: -0.75rem;
+    }
+    .options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      list-style: none;
+    }
+    .option-card {
+      display: flex;
+      align-items: center;
+      gap: 0.875rem;
+      padding: 1rem;
+      background: var(--color-card);
+      border: 1.5px solid transparent;
+      border-radius: var(--radius-card);
+      cursor: pointer;
+      transition: border-color 0.15s ease, background 0.15s ease;
+      text-align: left;
+      width: 100%;
+      font-family: var(--font);
+      font-size: 0.9375rem;
+      color: var(--color-text);
+    }
+    .option-card:hover { background: var(--color-card-hover); }
+    .option-card.selected { border-color: var(--color-border-selected); }
+    .option-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2rem;
+      height: 2rem;
+      border: 1.5px solid var(--color-border);
+      border-radius: 6px;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+    .option-card.selected .option-badge { border-color: var(--color-text); }
+    .option-text { flex: 1; line-height: 1.45; }
+
+    /* ── Textarea (Q7) ── */
+    .textarea-field {
+      width: 100%;
+      min-height: 120px;
+      padding: 0.875rem 1rem;
+      font-family: var(--font);
+      font-size: 0.9375rem;
+      color: var(--color-text);
+      background: var(--color-card);
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-card);
+      resize: vertical;
+      line-height: 1.55;
+    }
+    .textarea-field:focus {
+      outline: none;
+      border-color: var(--color-border-selected);
+    }
+
+    /* ── Conclusão ── */
+    .conclusao-screen {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 1.5rem 0 2rem;
+      gap: 1.5rem;
+      text-align: center;
+    }
+    .conclusao-text {
+      font-size: 1rem;
+      color: var(--color-text-muted);
+      line-height: 1.7;
+    }
+    .countdown-text {
+      font-size: 0.9375rem;
+      color: var(--color-text-muted);
+    }
+    .countdown-num {
+      font-weight: 700;
+      color: var(--color-text);
+    }
+
+    /* ── Footer ── */
+    .page-footer {
+      padding: 1.25rem 0;
+      text-align: center;
+      font-size: 0.8125rem;
+      color: var(--color-text-muted);
+    }
+
+    /* ── Estado oculto ── */
+    .state { display: none; }
+    .state.active { display: flex; flex-direction: column; flex: 1; }
+  </style>
+</head>
+<body>
+
+<!-- GTM noscript -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MLM6P2C7"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<div class="page">
+  <div class="page-inner">
+
+    <!-- Header fixo -->
+    <header class="page-header">
+      <h1 class="page-h1">Falta só um passo...</h1>
+      <p class="page-h2">Responda a pesquisa abaixo e siga as próximas instruções:</p>
+    </header>
+
+    <!-- Estado 1: Intro -->
+    <section id="state-intro" class="state active">
+      <div class="intro-card">
+        <p class="intro-card-title">Pesquisa de perfil e momento profissional</p>
+        <p class="intro-card-body">
+          Queremos conhecer melhor o seu momento profissional e entender quais desafios aparecem quando você pensa no cuidado às pessoas que vivem perdas e luto.<br><br>
+          Suas respostas vão nos ajudar a produzir conteúdos e experiências mais úteis para a sua prática.<br><br>
+          O preenchimento leva cerca de 2 minutos.
+        </p>
+        <button class="btn-primary" id="btn-comecar">COMEÇAR A PESQUISA</button>
+      </div>
+    </section>
+
+    <!-- Estado 2: Perguntas -->
+    <section id="state-quiz" class="state">
+      <div class="progress-header">
+        <button class="back-btn" id="btn-back" aria-label="Voltar">←</button>
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" id="progress-fill" style="width:0%"></div>
+        </div>
+        <span class="progress-label" id="progress-label">Pergunta 1 de 7</span>
+      </div>
+      <div class="question-screen" id="question-screen"></div>
+    </section>
+
+    <!-- Estado 3: Conclusão -->
+    <section id="state-conclusao" class="state">
+      <div class="conclusao-screen">
+        <p class="conclusao-text">
+          Obrigada por compartilhar um pouco do seu momento conosco.<br><br>
+          Suas respostas serão importantes para construirmos conteúdos e experiências que realmente conversem com os desafios da prática clínica.
+        </p>
+        <p class="countdown-text">Entrando no grupo em <span class="countdown-num" id="countdown-num">5</span>…</p>
+        <a href="https://sndflw.com/i/ac-2608" class="btn-whatsapp" id="btn-whatsapp">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          ENTRAR NO GRUPO DO WHATSAPP
+        </a>
+      </div>
+    </section>
+
+  </div>
+  <footer class="page-footer">© <span id="year"></span> Ana Clara Bastos</footer>
+</div>
+
+<script>
+// ── CONFIG ──────────────────────────────────────────────────────────────────
+const WEBHOOK_URL = ''; // preencher quando endpoint estiver pronto
+const WA_URL = 'https://sndflw.com/i/ac-2608';
+const TOTAL = 7;
+
+// ── PERGUNTAS ───────────────────────────────────────────────────────────────
+const QUESTIONS = [
+  {
+    field: 'momento_profissional',
+    text: 'Qual opção melhor descreve seu momento profissional hoje?',
+    legend: 'Escolha a alternativa que mais se aproxima da sua realidade atual.',
+    type: 'choice',
+    options: [
+      { text: 'Sou estudante de Psicologia e ainda não realizo atendimentos.', icp: 1, pront: 0 },
+      { text: 'Sou estudante de Psicologia e já realizo estágios ou atendimentos.', icp: 2, pront: 0 },
+      { text: 'Sou psicóloga recém-formada e estou atendendo meus primeiros casos.', icp: 4, pront: 0 },
+      { text: 'Sou psicóloga e já tenho pacientes, mas minha clínica ainda não é consistente.', icp: 5, pront: 0 },
+      { text: 'Sou psicóloga experiente e tenho uma prática clínica consolidada.', icp: 5, pront: 0 },
+      { text: 'Não sou psicóloga nem estudante de Psicologia.', icp: 0, pront: 0 },
+    ]
+  },
+  {
+    field: 'faixa_etaria',
+    text: 'Qual é a sua faixa etária?',
+    legend: 'Essa informação será usada somente para entendermos melhor o perfil das pessoas interessadas no tema.',
+    type: 'choice',
+    options: [
+      { text: '18 a 24 anos', icp: 0, pront: 0 },
+      { text: '25 a 34 anos', icp: 0, pront: 0 },
+      { text: '35 a 44 anos', icp: 0, pront: 0 },
+      { text: '45 a 54 anos', icp: 0, pront: 0 },
+      { text: '55 a 64 anos', icp: 0, pront: 0 },
+      { text: '65 anos ou mais', icp: 0, pront: 0 },
+    ]
+  },
+  {
+    field: 'relacao_atual_com_luto',
+    text: 'Qual opção mais se aproxima da sua relação atual com casos de perdas e luto?',
+    legend: 'Considere tanto os atendimentos em que o luto aparece como demanda principal quanto aqueles em que ele surge ao longo do processo terapêutico.',
+    type: 'choice',
+    options: [
+      { text: 'Ainda não atendo e quero me preparar antes que esses casos apareçam.', icp: 2, pront: 0 },
+      { text: 'Atendo casos de perdas ou luto ocasionalmente e ainda me sinto insegura.', icp: 4, pront: 2 },
+      { text: 'Esses casos já aparecem com frequência na minha clínica e sinto falta de mais método e repertório.', icp: 5, pront: 4 },
+      { text: 'Já atuo com casos de luto e busco atualização e refinamento para situações mais complexas.', icp: 5, pront: 3 },
+      { text: 'Meu interesse é principalmente pessoal ou acadêmico, sem intenção de atuar clinicamente.', icp: 0, pront: 0 },
+    ]
+  },
+  {
+    field: 'intencao_principal_luto',
+    text: 'O que mais te motiva a buscar aprofundamento em perdas e luto neste momento?',
+    legend: 'Escolha o motivo que mais pesa na sua decisão hoje, mesmo que mais de uma alternativa faça sentido para você.',
+    type: 'choice',
+    options: [
+      { text: 'Construir segurança clínica e diminuir o medo de causar danos.', icp: 4, pront: 2 },
+      { text: 'Saber conduzir melhor casos que já estão presentes no meu consultório.', icp: 5, pront: 3 },
+      { text: 'Ter ferramentas para ir além da escuta e do acolhimento inicial.', icp: 5, pront: 3 },
+      { text: 'Preparar-me antes de atender meus primeiros casos.', icp: 2, pront: 1 },
+      { text: 'Especializar-me e construir uma atuação reconhecida nessa área.', icp: 4, pront: 2 },
+      { text: 'Uma experiência pessoal de perda me aproximou do tema.', icp: 1, pront: 0 },
+    ]
+  },
+  {
+    field: 'formacao_anterior_luto',
+    text: 'Você já realizou algum curso ou formação específica sobre perdas e luto?',
+    legend: 'Considere cursos, extensões, pós-graduações, formações livres ou outros aprofundamentos dedicados especificamente ao tema.',
+    type: 'choice',
+    options: [
+      { text: 'Não. Este seria meu primeiro aprofundamento específico.', icp: 0, pront: 0 },
+      { text: 'Sim. Já realizei cursos breves ou introdutórios.', icp: 0, pront: 0 },
+      { text: 'Sim. Já realizei uma formação mais extensa sobre o tema.', icp: 0, pront: 0 },
+    ]
+  },
+  {
+    field: 'prontidao_investimento_90_dias',
+    text: 'Pensando nos próximos três meses, qual frase melhor descreve sua possibilidade de investir em uma formação aprofundada?',
+    legend: 'Não existe resposta certa. Escolha a opção que representa sua realidade atual.',
+    type: 'choice',
+    options: [
+      { text: 'É uma prioridade e já tenho orçamento disponível.', icp: 0, pront: 5 },
+      { text: 'É uma prioridade, mas preciso me organizar financeiramente.', icp: 0, pront: 4 },
+      { text: 'Tenho interesse, mas ainda não tenho previsão de investimento.', icp: 0, pront: 2 },
+      { text: 'No momento, só consigo participar de conteúdos gratuitos ou de baixo custo.', icp: 0, pront: 0 },
+    ]
+  },
+  {
+    field: 'dificuldade_clinica_aberta',
+    text: 'Pensando em um atendimento real, em qual momento você mais sente ou teme ficar sem direção ao cuidar de uma pessoa enlutada?',
+    legend: 'Conte, se possível, o que acontece na sessão, qual é a sua dúvida e o que você teme fazer de forma inadequada.',
+    type: 'textarea',
+  }
+];
+
+// ── ESTADO ──────────────────────────────────────────────────────────────────
+const answers = new Array(TOTAL).fill(null);
+let currentStep = 0; // 0-based
+let countdownInterval = null;
+
+// Lê params da URL
+const params = new URLSearchParams(window.location.search);
+const lead = {
+  nome: params.get('nome') || '',
+  email: params.get('email') || '',
+  telefone: params.get('telefone') || '',
+};
+
+// ── UTILITÁRIOS ─────────────────────────────────────────────────────────────
+function showState(id) {
+  document.querySelectorAll('.state').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function pushEvent(eventName, extra) {
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push(Object.assign({ event: eventName }, extra || {}));
+}
+
+const BADGES = ['A', 'B', 'C', 'D', 'E', 'F'];
+
+// ── RENDERIZAÇÃO ─────────────────────────────────────────────────────────────
+function renderQuestion(step) {
+  const q = QUESTIONS[step];
+  const screen = document.getElementById('question-screen');
+  const pct = ((step + 1) / TOTAL) * 100;
+
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-label').textContent = 'Pergunta ' + (step + 1) + ' de ' + TOTAL;
+
+  if (q.type === 'textarea') {
+    screen.innerHTML =
+      '<h2 class="question-title">' + q.text + '</h2>' +
+      '<p class="question-legend">' + q.legend + '</p>' +
+      '<textarea class="textarea-field" id="textarea-answer" placeholder="Escreva aqui...">' +
+        (answers[step] || '') +
+      '</textarea>' +
+      '<button class="btn-primary" id="btn-enviar">ENVIAR PESQUISA</button>';
+
+    document.getElementById('btn-enviar').addEventListener('click', function() {
+      answers[step] = document.getElementById('textarea-answer').value.trim();
+      submitAndFinish();
+    });
+
+  } else {
+    const saved = answers[step];
+    const optionsHtml = q.options.map(function(opt, i) {
+      return '<li><button class="option-card' + (saved === i ? ' selected' : '') +
+        '" data-idx="' + i + '">' +
+        '<span class="option-badge">' + BADGES[i] + '</span>' +
+        '<span class="option-text">' + opt.text + '</span>' +
+        '</button></li>';
+    }).join('');
+
+    screen.innerHTML =
+      '<h2 class="question-title">' + q.text + '</h2>' +
+      '<p class="question-legend">' + q.legend + '</p>' +
+      '<ul class="options-list">' + optionsHtml + '</ul>';
+
+    screen.querySelectorAll('.option-card').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        answers[step] = parseInt(btn.dataset.idx);
+        goNext();
+      });
+    });
+  }
+}
+
+// ── NAVEGAÇÃO ────────────────────────────────────────────────────────────────
+function goNext() {
+  if (currentStep < TOTAL - 1) {
+    currentStep++;
+    renderQuestion(currentStep);
+  }
+}
+
+document.getElementById('btn-back').addEventListener('click', function() {
+  if (currentStep === 0) {
+    showState('state-intro');
+  } else {
+    currentStep--;
+    renderQuestion(currentStep);
+  }
+});
+
+document.getElementById('btn-comecar').addEventListener('click', function() {
+  pushEvent('pesquisa_iniciada');
+  currentStep = 0;
+  showState('state-quiz');
+  renderQuestion(0);
+});
+
+// ── CÁLCULO DE SCORES ────────────────────────────────────────────────────────
+function calcScores() {
+  var icp = 0, pront = 0;
+
+  // Score ICP: Q1 (idx 0), Q3 (idx 2), Q4 (idx 3)
+  [0, 2, 3].forEach(function(qIdx) {
+    var ans = answers[qIdx];
+    if (ans !== null && typeof ans === 'number') {
+      icp += QUESTIONS[qIdx].options[ans].icp;
+    }
+  });
+
+  // Score Prontidão: Q3 (idx 2), Q4 (idx 3), Q6 (idx 5)
+  [2, 3, 5].forEach(function(qIdx) {
+    var ans = answers[qIdx];
+    if (ans !== null && typeof ans === 'number') {
+      pront += QUESTIONS[qIdx].options[ans].pront;
+    }
+  });
+
+  return { score_icp: icp, score_prontidao: pront, score_total: icp + pront };
+}
+
+// ── PAYLOAD ──────────────────────────────────────────────────────────────────
+function buildPayload() {
+  var scores = calcScores();
+  var payload = {
+    versao_pesquisa: 'pesquisa_leads_l2608_v1',
+    nome: lead.nome,
+    email: lead.email,
+    telefone: lead.telefone,
+    score_icp: scores.score_icp,
+    score_prontidao: scores.score_prontidao,
+    score_total: scores.score_total,
+  };
+
+  QUESTIONS.forEach(function(q, i) {
+    var ans = answers[i];
+    if (q.type === 'textarea') {
+      payload[q.field] = typeof ans === 'string' ? ans : '';
+    } else {
+      payload[q.field] = (ans !== null && typeof ans === 'number') ? q.options[ans].text : '';
+    }
+  });
+
+  return payload;
+}
+
+// ── ENVIO ────────────────────────────────────────────────────────────────────
+function submitAndFinish() {
+  var payload = buildPayload();
+
+  if (WEBHOOK_URL) {
+    fetch(WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      keepalive: true,
+      body: JSON.stringify(payload),
+    }).catch(function() {});
+  }
+
+  pushEvent('pesquisa_concluida');
+  showState('state-conclusao');
+  startCountdown();
+}
+
+// ── COUNTDOWN ────────────────────────────────────────────────────────────────
+function startCountdown() {
+  var secs = 5;
+  var el = document.getElementById('countdown-num');
+
+  countdownInterval = setInterval(function() {
+    secs--;
+    if (el) el.textContent = secs;
+    if (secs <= 0) {
+      clearInterval(countdownInterval);
+      window.location.href = WA_URL;
+    }
+  }, 1000);
+
+  document.getElementById('btn-whatsapp').addEventListener('click', function() {
+    clearInterval(countdownInterval);
+    pushEvent('whatsapp_click');
+    // link href já redireciona
+  });
+}
+
+// ── INIT ─────────────────────────────────────────────────────────────────────
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
