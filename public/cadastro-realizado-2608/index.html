@@ -77,7 +77,7 @@
 
     .page-h2 {
       font-size: 0.9375rem;
-      color: var(--wa-green);
+      color: var(--green);
       font-weight: 600;
       line-height: 1.4;
     }
@@ -366,6 +366,11 @@
     /* ── Estado oculto ── */
     .state { display: none; }
     .state.active { display: flex; flex-direction: column; flex: 1; }
+
+    /* ── Header oculto a partir da Q2 ── */
+    .page-header.hidden {
+      display: none;
+    }
   </style>
 </head>
 <body>
@@ -559,6 +564,14 @@ function renderQuestion(step) {
   document.getElementById('progress-fill').style.width = pct + '%';
   document.getElementById('progress-label').textContent = (step + 1) + ' de ' + TOTAL;
 
+  // Oculta header a partir da pergunta 2
+  var header = document.querySelector('.page-header');
+  if (step >= 1) {
+    header.classList.add('hidden');
+  } else {
+    header.classList.remove('hidden');
+  }
+
   if (q.type === 'textarea') {
     screen.innerHTML =
       '<h2 class="question-title">' + q.text + '</h2>' +
@@ -659,6 +672,7 @@ function goNext() {
 
 document.getElementById('btn-back').addEventListener('click', function() {
   if (currentStep === 0) {
+    document.querySelector('.page-header').classList.remove('hidden');
     showState('state-intro');
   } else {
     currentStep--;
