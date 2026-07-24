@@ -437,6 +437,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script>
 // ── CONFIG ──────────────────────────────────────────────────────────────────
 var WEBHOOK_URL = 'https://manin.com.br/api/webhooks/pesquisa';
+var WEBHOOK_URL_2 = 'https://webhooks.manin.com.br/webhook/pesquisa-vibecoding-2608';
 var WA_URL = 'https://sndflw.com/i/ac-2608';
 var TOTAL = 7;
 var Q1_OUTRO_IDX = 5; // índice da opção F em Q1
@@ -739,14 +740,16 @@ function buildPayload() {
 function submitAndFinish() {
   var payload = buildPayload();
 
-  if (WEBHOOK_URL) {
-    fetch(WEBHOOK_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      keepalive: true,
-      body: JSON.stringify(payload),
-    }).catch(function() {});
-  }
+  var fetchOpts = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    keepalive: true,
+    body: JSON.stringify(payload),
+  };
+  Promise.allSettled([
+    WEBHOOK_URL   ? fetch(WEBHOOK_URL,   fetchOpts) : Promise.resolve(),
+    WEBHOOK_URL_2 ? fetch(WEBHOOK_URL_2, fetchOpts) : Promise.resolve(),
+  ]);
 
   pushEvent('pesquisa_concluida');
   showState('state-conclusao');
