@@ -515,7 +515,7 @@ success:true
 });
 
 // === WEBHOOK ===
-var redirectUrl='https://dpl.anaclarabastos.com.br/cadastro-realizado-2608?email='+encodeURIComponent(email);
+var redirectUrl='https://lp.anaclarabastos.com.br/cadastro-realizado-2608/?nome='+encodeURIComponent(nome)+'&email='+encodeURIComponent(email)+'&telefone='+encodeURIComponent(phoneClean);
 var webhookUrl='https://workflows.manin.com.br/webhook/captacao-vibecoding-2608';
 var payload=JSON.stringify({
 nome:nome,email:email,telefone:phoneClean,profissao:prof,
