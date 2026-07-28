@@ -438,7 +438,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 var WEBHOOK_URL = 'https://manin.com.br/api/webhooks/pesquisa';
 var WEBHOOK_URL_2 = 'https://webhooks.manin.com.br/webhook/pesquisa-vibecoding-2608';
 var WA_URL = 'https://sndflw.com/i/ac-2608';
-var TOTAL = 7;
 var Q1_OUTRO_IDX = 5; // índice da opção F em Q1
 
 // ── PERGUNTAS ───────────────────────────────────────────────────────────────
@@ -530,17 +529,28 @@ var QUESTIONS = [
 ];
 
 // ── ESTADO ──────────────────────────────────────────────────────────────────
-var answers = new Array(TOTAL).fill(null);
-var outraProfissao = ''; // texto livre quando Q1 = opção F
-var currentStep = 0;
-var countdownInterval = null;
-
 var params = new URLSearchParams(window.location.search);
 var lead = {
   nome: params.get('nome') || '',
   email: params.get('email') || '',
   telefone: params.get('telefone') || '',
 };
+
+// Se email não veio na URL, adiciona pergunta de e-mail ao final
+if (!lead.email) {
+  QUESTIONS.push({
+    field: 'email_pesquisa',
+    text: 'Qual é o seu e-mail?',
+    legend: 'Para enviarmos materiais e novidades sobre a formação.',
+    type: 'email',
+  });
+}
+
+var TOTAL = QUESTIONS.length;
+var answers = new Array(TOTAL).fill(null);
+var outraProfissao = ''; // texto livre quando Q1 = opção F
+var currentStep = 0;
+var countdownInterval = null;
 
 // ── UTILITÁRIOS ─────────────────────────────────────────────────────────────
 function showState(id) {
@@ -572,18 +582,39 @@ function renderQuestion(step) {
     header.classList.remove('hidden');
   }
 
-  if (q.type === 'textarea') {
+  if (q.type === 'email') {
+    screen.innerHTML =
+      '<h2 class="question-title">' + q.text + '</h2>' +
+      '<p class="question-legend">' + q.legend + '</p>' +
+      '<input type="email" class="profissao-input" id="email-answer" placeholder="seuemail@exemplo.com" value="' + (answers[step] || '') + '" autocomplete="email" />' +
+      '<button class="btn-primary" id="btn-enviar-email">Enviar pesquisa</button>';
+
+    document.getElementById('btn-enviar-email').addEventListener('click', function() {
+      var val = document.getElementById('email-answer').value.trim();
+      answers[step] = val;
+      lead.email = val;
+      submitAndFinish();
+    });
+
+  } else if (q.type === 'textarea') {
+    var isLast = (step === TOTAL - 1);
+    var btnLabel = isLast ? 'Enviar pesquisa' : 'Continuar';
+
     screen.innerHTML =
       '<h2 class="question-title">' + q.text + '</h2>' +
       '<p class="question-legend">' + q.legend + '</p>' +
       '<textarea class="textarea-field" id="textarea-answer" placeholder="Escreva aqui...">' +
         (answers[step] || '') +
       '</textarea>' +
-      '<button class="btn-primary" id="btn-enviar">Enviar pesquisa</button>';
+      '<button class="btn-primary" id="btn-enviar">' + btnLabel + '</button>';
 
     document.getElementById('btn-enviar').addEventListener('click', function() {
       answers[step] = document.getElementById('textarea-answer').value.trim();
-      submitAndFinish();
+      if (isLast) {
+        submitAndFinish();
+      } else {
+        goNext();
+      }
     });
 
   } else {
