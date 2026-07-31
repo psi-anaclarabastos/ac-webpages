@@ -740,6 +740,8 @@ function calcScores() {
 function buildPayload() {
   var scores = calcScores();
   var payload = {
+    project_slug: 'ac-l2608',
+    funil_tag: 'L2608',
     versao_pesquisa: 'pesquisa_leads_l2608_v1',
     nome: lead.nome,
     email: lead.email,
@@ -770,16 +772,18 @@ function buildPayload() {
 function submitAndFinish() {
   var payload = buildPayload();
 
-  var fetchOpts = {
+  var payloadStr = JSON.stringify(payload);
+
+  // Dashboard: sendBeacon evita preflight CORS
+  if (WEBHOOK_URL) navigator.sendBeacon(WEBHOOK_URL, payloadStr);
+
+  // n8n: fetch normal
+  if (WEBHOOK_URL_2) fetch(WEBHOOK_URL_2, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
     keepalive: true,
-    body: JSON.stringify(payload),
-  };
-  Promise.allSettled([
-    WEBHOOK_URL   ? fetch(WEBHOOK_URL,   fetchOpts) : Promise.resolve(),
-    WEBHOOK_URL_2 ? fetch(WEBHOOK_URL_2, fetchOpts) : Promise.resolve(),
-  ]);
+    body: payloadStr,
+  });
 
   pushEvent('pesquisa_concluida');
   showState('state-conclusao');
