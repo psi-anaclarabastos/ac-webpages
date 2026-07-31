@@ -774,8 +774,8 @@ function submitAndFinish() {
 
   var payloadStr = JSON.stringify(payload);
 
-  // Dashboard: sendBeacon evita preflight CORS
-  if (WEBHOOK_URL) navigator.sendBeacon(WEBHOOK_URL, payloadStr);
+  // Dashboard: desativado temporariamente
+  // if (WEBHOOK_URL) navigator.sendBeacon(WEBHOOK_URL, payloadStr);
 
   // n8n: fetch normal
   if (WEBHOOK_URL_2) fetch(WEBHOOK_URL_2, {
