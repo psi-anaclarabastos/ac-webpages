@@ -548,11 +548,12 @@ utm_content:utmData.utm_content
 // Send webhooks in parallel then redirect — timeout safety net at 3s
 var redirected=false;
 function doRedirect(){if(!redirected){redirected=true;window.location.href=redirectUrl}}
-var headers={'Content-Type':'application/json','Accept':'application/json'};
+var headersN8n={'Content-Type':'application/json','Accept':'application/json'};
+var headersDash={'Content-Type':'application/json'};
 
 Promise.allSettled([
-fetch(webhookUrl,{method:'POST',headers:headers,body:payload,keepalive:true}),
-fetch('https://dash.manin.com.br/api/webhooks/leads',{method:'POST',headers:headers,body:dashPayload,keepalive:true})
+fetch(webhookUrl,{method:'POST',headers:headersN8n,body:payload,keepalive:true}),
+fetch('https://dash.manin.com.br/api/webhooks/leads',{method:'POST',headers:headersDash,body:dashPayload,keepalive:true})
 ]).then(doRedirect);
 
 // Safety: redirect even if fetch hangs
