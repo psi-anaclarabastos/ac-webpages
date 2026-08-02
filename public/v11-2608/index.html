@@ -545,11 +545,6 @@ utm_term:utmData.utm_term,
 utm_content:utmData.utm_content
 });
 
-// DataCrazy CRM payload
-var datacrazyPayload=JSON.stringify({
-nome:nome,email:email,telefone:phoneClean,profissao:prof,funil:'L2608'
-});
-
 // Send webhooks in parallel then redirect — timeout safety net at 3s
 var redirected=false;
 function doRedirect(){if(!redirected){redirected=true;window.location.href=redirectUrl}}
@@ -557,9 +552,6 @@ var headersN8n={'Content-Type':'application/json','Accept':'application/json'};
 
 // Dashboard: sendBeacon avoids CORS preflight (no custom Content-Type = simple request)
 navigator.sendBeacon('https://dash.manin.com.br/api/webhooks/leads',dashPayload);
-
-// DataCrazy CRM
-fetch('https://api.datacrazy.io/v1/crm/api/crm/integrations/webhook/business/b84bac6a-075a-4654-ba22-d05443566647',{method:'POST',headers:{'Content-Type':'application/json'},body:datacrazyPayload,keepalive:true});
 
 fetch(webhookUrl,{method:'POST',headers:headersN8n,body:payload,keepalive:true})
 .finally(doRedirect);
