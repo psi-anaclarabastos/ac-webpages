@@ -1,6 +1,13 @@
 {
   "outputDirectory": "public",
   "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "destination": "https://anaclarabastos.com.br/espera/?utm_source=Organicos&utm_medium=Redirect_Captura&utm_campaign=Organicos+Redirects+Lan%C3%A7amento",
+      "permanent": false
+    }
+  ],
   "rewrites": [
     { "source": "/images/:file*", "destination": "/v11-2608/images/:file*" },
     { "source": "/", "destination": "/v11-2608/" }
