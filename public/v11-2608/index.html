@@ -81,6 +81,7 @@ select.input:valid:not([data-empty]){color:var(--on-surface)}
 .btn-primary:hover{opacity:.9}
 .btn-primary:disabled{opacity:.6;cursor:not-allowed}
 .safe-text{font-size:.75rem;color:var(--outline);font-style:italic;margin-top:.5rem}
+/* TEMP: checkbox comunicação evento */.checkbox-consent{display:flex;align-items:flex-start;gap:.5rem;margin-top:.25rem;cursor:pointer}.checkbox-consent input{margin-top:.2rem;flex-shrink:0;accent-color:var(--purple);width:1rem;height:1rem;cursor:pointer}.checkbox-consent span{font-size:.8rem;color:var(--on-surface-variant);line-height:1.4}/* /TEMP */
 .hero-img-mobile{margin-top:2rem;width:100%;max-width:400px;overflow:hidden}
 .hero-img-mobile img{width:100%;object-fit:cover}
 
@@ -208,6 +209,12 @@ select.input:valid:not([data-empty]){color:var(--on-surface)}
 <option value="Estudante de Psicologia">Estudante de Psicologia</option>
 <option value="Outros">Outros</option>
 </select>
+<!-- TEMP: checkbox comunicação evento — remover quando não necessário -->
+<label class="checkbox-consent">
+  <input type="checkbox" name="consentComms" id="consentComms">
+  <span>Concordo em receber comunicação do evento.</span>
+</label>
+<!-- /TEMP -->
 <button type="submit" class="btn-primary" id="btnSubmit">Quero me inscrever</button>
 <p class="safe-text">Não se preocupe, seus dados estão seguros conosco.</p>
 </form>
